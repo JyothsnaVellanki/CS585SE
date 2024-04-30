@@ -1,0 +1,260 @@
+[
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "session_state",
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "isExtraImport": true,
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "smtplib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "smtplib",
+        "description": "smtplib",
+        "detail": "smtplib",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "google.generativeai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "google.generativeai",
+        "description": "google.generativeai",
+        "detail": "google.generativeai",
+        "documentation": {}
+    },
+    {
+        "label": "classify_image",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def classify_image(image_path: str) -> str:\n    genai.configure(api_key=os.getenv(\"GENAI_API_KEY\"))\n    # Set up the model with desired settings\n    generation_config = {\n        \"temperature\": 1,\n        \"top_p\": 0.95,\n        \"top_k\": 0,\n        \"max_output_tokens\": 8192,\n    }\n    prompt = f\"\"\"Given the image below, classify it on the basis of age (<=14 years, >14 years) and by gender (Male, Female). Do not use any other information apart from the image. Image can be a meme, a ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "classify_text",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def classify_text(text) -> str:\n    genai.configure(api_key=os.getenv(\"GENAI_API_KEY\"))\n    # Set up the model with desired settings\n    generation_config = {\n        \"temperature\": 1,\n        \"top_p\": 0.95,\n        \"top_k\": 0,\n        \"max_output_tokens\": 8192,\n    }\n    prompt = f\"\"\"Given the text/comment below, classify it on the basis of age (<=14 years, >14 years) and by gender (Male, Female). Do not use any other information apart from the text. A text can be a comment, a review, a message, or any other form of written communication. The text is not suitable for children under 14 years of age only if it contains explicit content or is harmful in nature. Classify it as 'Less than or equal to 14' if it is suitable for children under 14 years of age, and 'More than 14' if it is not suitable for children under 14 years of age. ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "user_exists",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def user_exists(email, json_file_path):\n    # Function to check if user with the given email exists\n    with open(json_file_path, \"r\") as file:\n        users = json.load(file)\n        for user in users[\"users\"]:\n            if user[\"email\"] == email:\n                return True\n    return False\ndef send_verification_code(email, code):\n    SENDER_MAIL_ID = os.getenv(\"SENDER_MAIL_ID\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "send_verification_code",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def send_verification_code(email, code):\n    SENDER_MAIL_ID = os.getenv(\"SENDER_MAIL_ID\")\n    APP_PASSWORD = os.getenv(\"APP_PASSWORD\")\n    RECEIVER = email\n    server = smtplib.SMTP_SSL(\"smtp.googlemail.com\", 465)\n    server.login(SENDER_MAIL_ID, APP_PASSWORD)\n    message = f\"Subject: Your Verification Code\\n\\nYour verification code is: {code}\"\n    server.sendmail(SENDER_MAIL_ID, RECEIVER, message)\n    server.quit()\n    st.success(\"Email sent successfully!\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "generate_verification_code",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def generate_verification_code(length=6):\n    return \"\".join(random.choices(string.ascii_uppercase + string.digits, k=length))\ndef signup(json_file_path=\"data.json\"):\n    st.title(\"Student Signup Page\")\n    with st.form(\"signup_form\"):\n        st.write(\"Fill in the details below to create an account:\")\n        name = st.text_input(\"Name:\")\n        email = st.text_input(\"Email:\")\n        age = st.number_input(\"Age:\", min_value=0, max_value=120)\n        sex = st.radio(\"Sex:\", (\"Male\", \"Female\", \"Other\"))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def signup(json_file_path=\"data.json\"):\n    st.title(\"Student Signup Page\")\n    with st.form(\"signup_form\"):\n        st.write(\"Fill in the details below to create an account:\")\n        name = st.text_input(\"Name:\")\n        email = st.text_input(\"Email:\")\n        age = st.number_input(\"Age:\", min_value=0, max_value=120)\n        sex = st.radio(\"Sex:\", (\"Male\", \"Female\", \"Other\"))\n        password = st.text_input(\"Password:\", type=\"password\")\n        confirm_password = st.text_input(\"Confirm Password:\", type=\"password\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "check_login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_login(username, password, json_file_path=\"data.json\"):\n    try:\n        with open(json_file_path, \"r\") as json_file:\n            data = json.load(json_file)\n        for user in data[\"users\"]:\n            if user[\"email\"] == username and user[\"password\"] == password:\n                session_state[\"logged_in\"] = True\n                session_state[\"user_info\"] = user\n                st.success(\"Login successful!\")\n                return user",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_database",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def initialize_database(json_file_path=\"data.json\"):\n    try:\n        if not os.path.exists(json_file_path):\n            data = {\"users\": []}\n            with open(json_file_path, \"w\") as json_file:\n                json.dump(data, json_file)\n    except Exception as e:\n        print(f\"Error initializing database: {e}\")\ndef create_account(name, email, age, sex, password, json_file_path=\"data.json\"):\n    try:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "create_account",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def create_account(name, email, age, sex, password, json_file_path=\"data.json\"):\n    try:\n        if not os.path.exists(json_file_path) or os.stat(json_file_path).st_size == 0:\n            data = {\"users\": []}\n        else:\n            with open(json_file_path, \"r\") as json_file:\n                data = json.load(json_file)\n        # Append new user data to the JSON structure\n        email = email.lower()\n        password = hashlib.md5(password.encode()).hexdigest()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def login(json_file_path=\"data.json\"):\n    st.title(\"Login Page\")\n    username = st.text_input(\"Email:\")\n    password = st.text_input(\"Password:\", type=\"password\")\n    username = username.lower()\n    password = hashlib.md5(password.encode()).hexdigest()\n    login_button = st.button(\"Login\")\n    if login_button:\n        user = check_login(username, password, json_file_path)\n        if user is not None:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_info",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_user_info(email, json_file_path=\"data.json\"):\n    try:\n        with open(json_file_path, \"r\") as json_file:\n            data = json.load(json_file)\n            for user in data[\"users\"]:\n                if user[\"email\"] == email:\n                    return user\n        return None\n    except Exception as e:\n        st.error(f\"Error getting user information: {e}\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "render_dashboard",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def render_dashboard(user_info):\n    try:\n        st.title(f\"Welcome to the Dashboard, {user_info['name']}!\")\n        st.subheader(\"Student Information\")\n        st.write(f\"Name: {user_info['name']}\")\n        st.write(f\"Sex: {user_info['sex']}\")\n        st.write(f\"Age: {user_info['age']}\")\n    except Exception as e:\n        st.error(f\"Error rendering dashboard: {e}\")\ndef main(json_file_path=\"data.json\"):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def main(json_file_path=\"data.json\"):\n    st.header(\"Illicit Content Detection System\")\n    page = st.sidebar.radio(\n        \"Go to\",\n        (\n            \"Signup/Login\",\n            \"Dashboard\",\n            \"Identify Illicit Content\",\n        ),\n        key=\"page\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "session_state",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "session_state = st.session_state\nif \"user_index\" not in st.session_state:\n    st.session_state[\"user_index\"] = 0\nload_dotenv()\nsafety_settings = [\n    {\n        \"category\": \"HARM_CATEGORY_DANGEROUS\",\n        \"threshold\": \"BLOCK_NONE\",\n    },\n    {",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "safety_settings",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "safety_settings = [\n    {\n        \"category\": \"HARM_CATEGORY_DANGEROUS\",\n        \"threshold\": \"BLOCK_NONE\",\n    },\n    {\n        \"category\": \"HARM_CATEGORY_HARASSMENT\",\n        \"threshold\": \"BLOCK_NONE\",\n    },\n    {",
+        "detail": "app",
+        "documentation": {}
+    }
+]

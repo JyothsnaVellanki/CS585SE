@@ -1,0 +1,22 @@
+{
+    "users": [
+        {
+            "name": "Shreyansh Jain",
+            "email": "shreyanshjain.tsk221@gmail.com",
+            "age": 22,
+            "sex": "Male",
+            "password": "e10adc3949ba59abbe56e057f20f883e",
+            "report": null,
+            "questions": null
+        },
+        {
+            "name": "jyo",
+            "email": "jyothsnasriv1@gmail.com",
+            "age": 19,
+            "sex": "Female",
+            "password": "e0a8aa81eb1762d529783cf587f6f422",
+            "report": null,
+            "questions": null
+        }
+    ]
+}
